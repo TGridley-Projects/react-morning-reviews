@@ -1,16 +1,20 @@
 import React, {Component} from "react"
+import movies from '../data/movies.json'
+import ListItems from './ListItem'
+import Form from './Form'
 
 class List extends Component{
     constructor(){
         super()
 
         this.state = {
-            movies: []
+            movies: movies
         }
     }
 
     render(){
-        return <h1>This is the List component</h1>
+        const moviesMap = this.state.movies.map(movie => {return <ListItems key={movie.id} movie={movie} />})
+        return <div className='List'><Form/>{moviesMap}</div>
     }
 }
 
